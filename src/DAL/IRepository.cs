@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DAL.Helpers;
 
 namespace DAL
 {
@@ -27,6 +28,13 @@ namespace DAL
 		/// </summary>
 		/// <param name="item">The item.</param>
 		void Add(T item);
+
+		/// <summary>
+		/// Adds the asynchronous.
+		/// </summary>
+		/// <param name="item">The item.</param>
+		/// <returns>Task</returns>
+		SaveUpdateResult<T> AddAsync(T item);
 
 		/// <summary>
 		/// Removes the specified identifier.

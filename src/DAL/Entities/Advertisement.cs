@@ -13,7 +13,7 @@ namespace DAL.Entities
 		/// Gets or sets the advertisement pk.
 		/// </summary>
 		[Key]
-		public Guid AdvertisementPK { get; set; }
+		public Guid AdvertisementId { get; set; }
 
 		/// <summary>
 		/// Gets or sets the user.
@@ -24,18 +24,7 @@ namespace DAL.Entities
 		/// Gets or sets the user fk.
 		/// </summary>
 		[ForeignKey("User")]
-		public Guid UserFK { get; set; }
-
-		/// <summary>
-		/// Gets or sets the model.
-		/// </summary>
-		public Model Model { get; set; }
-
-		/// <summary>
-		/// Gets or sets the model fk.
-		/// </summary>
-		[ForeignKey("Model")]
-		public int ModelFK { get; set; }
+		public Guid UserId { get; set; }
 
 		/// <summary>
 		/// Gets or sets the description.
@@ -44,9 +33,14 @@ namespace DAL.Entities
 		public string Description { get; set; }
 
 		/// <summary>
-		/// Gets or sets the production year.
+		/// Gets or sets the car.
 		/// </summary>
-		public DateTime ProductionYear { get; set; }
+		public virtual Car Car { get; set; }
+
+		/// <summary>
+		/// Gets or sets the car identifier.
+		/// </summary>
+		public Guid CarId { get; set; }
 
 		/// <summary>
 		/// Gets or sets the price.

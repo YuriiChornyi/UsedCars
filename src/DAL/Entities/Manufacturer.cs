@@ -10,10 +10,10 @@ namespace DAL.Entities
 	public class Manufacturer
 	{
 		/// <summary>
-		/// Gets or sets the manufacturer pk.
+		/// Gets or sets the manufacturer identifier.
 		/// </summary>
 		[Key]
-		public int ManufacturerPK { get; set; }
+		public int ManufacturerId { get; set; }
 
 		/// <summary>
 		/// Gets or sets the name of the manufacturer.
@@ -22,10 +22,8 @@ namespace DAL.Entities
 		public string ManufacturerName { get; set; }
 
 		/// <summary>
-		/// Gets or sets the models.
+		/// Gets or sets the car models.
 		/// </summary>
-		public virtual ICollection<Model> Models { get; set; }
-
-
+		public virtual ICollection<CarModel> CarModels { get; set; }
 	}
 }

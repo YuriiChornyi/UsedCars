@@ -12,29 +12,65 @@ namespace DAL
 		/// <summary>
 		/// Initializes a new instance of the <see cref="UsedCarsDbContext"/> class.
 		/// </summary>
-		/// <param name="options">The options for this context.</param>
+		/// <param name="options">The options.</param>
 		public UsedCarsDbContext(DbContextOptions options) : base(options)
 		{
+
 		}
 
 		/// <summary>
 		/// Gets or sets the advertisements.
 		/// </summary>>
-		public DbSet<Advertisement> Advertisements { get; set; }
+		public DbSet<Advertisement> Advertisement { get; set; }
 
 		/// <summary>
 		/// Gets or sets the manufacturers.
 		/// </summary>
-		public DbSet<Manufacturer> Manufacturers { get; set; }
+		public DbSet<Manufacturer> Manufacturer { get; set; }
 
 		/// <summary>
 		/// Gets or sets the models.
 		/// </summary>
-		public DbSet<Model> Models { get; set; }
+		public DbSet<CarModel> CarModel { get; set; }
 
 		/// <summary>
 		/// Gets or sets the users.
 		/// </summary>
-		public DbSet<User> Users { get; set; }
+		public DbSet<User> User { get; set; }
+
+		/// <summary>
+		/// Gets or sets the transmission types.
+		/// </summary>
+		public DbSet<TransmissionType> TransmissionType { get; set; }
+
+		/// <summary>
+		/// Gets or sets the engine types.
+		/// </summary>
+		public DbSet<EngineType> EngineType { get; set; }
+
+		/// <summary>
+		/// Gets or sets the photos.
+		/// </summary>
+		public DbSet<Photo> Photo { get; set; }
+
+		/// <summary>
+		/// Gets or sets the engine.
+		/// </summary>
+		public DbSet<Engine> Engine { get; set; }
+
+		/// <summary>
+		/// Gets or sets the transmission.
+		/// </summary>
+		public DbSet<Transmission> Transmission { get; set; }
+
+		/// <summary>
+		/// Gets or sets the type of the gear box.
+		/// </summary>
+		public DbSet<GearBoxType> GearBoxType { get; set; }
+
+		/// <summary>
+		/// Gets or sets the car.
+		/// </summary>
+		public DbSet<Car> Car { get; set; }
 	}
 }

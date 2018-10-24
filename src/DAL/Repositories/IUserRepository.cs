@@ -7,7 +7,7 @@ namespace DAL.Repositories
 	/// <summary>
 	/// IUserRepository
 	/// </summary>
-	public interface IUserRepository
+	public interface IUserRepository: IRepository<User>
 	{
 		/// <summary>
 		/// Gets the user advertisements.

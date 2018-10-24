@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using DAL.Helpers;
 using Microsoft.EntityFrameworkCore;
 
 namespace DAL
@@ -52,6 +53,11 @@ namespace DAL
 		public void Add(T item)
 		{
 			_dbContext.Set<T>().AddAsync(item);
+		}
+
+		public SaveUpdateResult<T> AddAsync(T item)
+		{
+			throw new NotImplementedException();
 		}
 
 		/// <summary>

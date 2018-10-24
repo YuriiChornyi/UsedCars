@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Hosting;
+using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
 
 namespace UsedCars
 {
@@ -19,6 +14,13 @@ namespace UsedCars
 
 		public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
 			WebHost.CreateDefaultBuilder(args)
+				.ConfigureServices(services => services.AddAutofac())
 				.UseStartup<Startup>();
+
+		//.ConfigureAppConfiguration((hostContext, config) =>
+		//{
+		//	config.Sources.Clear();
+		//	config.AddJsonFile("appsettings.json");
+		//});
 	}
 }

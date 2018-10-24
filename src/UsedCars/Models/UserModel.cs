@@ -1,23 +1,17 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 
-namespace DAL.Entities
+namespace UsedCars.Models
 {
-	/// <summary>
-	/// User Entity
-	/// </summary>
-	public class User
+	public class UserModel
 	{
 		/// <summary>
-		/// Gets or sets the user identifier.
+		/// Gets or sets the user pk.
 		/// </summary>
-		[Key]
-		public Guid UserId { get; set; }
+		public Guid UserPK { get; set; }
 
 		/// <summary>
 		/// Gets or sets the name.
 		/// </summary>
-		[MaxLength(50)]
 		public string Name { get; set; }
 
 		/// <summary>
@@ -28,13 +22,11 @@ namespace DAL.Entities
 		/// <summary>
 		/// Gets or sets the email.
 		/// </summary>
-		[MaxLength(50)]
 		public string Email { get; set; }
 
 		/// <summary>
 		/// Gets or sets the phone.
 		/// </summary>
-		[MaxLength(50)]
 		public string Phone { get; set; }
 	}
 }
