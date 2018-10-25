@@ -23,7 +23,7 @@ namespace DAL.Entities
 		/// <summary>
 		/// Gets or sets the manufacturer.
 		/// </summary>
-		public Manufacturer Manufacturer { get; set; }
+		public virtual Manufacturer Manufacturer { get; set; }
 
 		/// <summary>
 		/// Gets or sets the manufacturer identifier.

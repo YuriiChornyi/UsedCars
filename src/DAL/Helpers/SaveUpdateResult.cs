@@ -1,6 +1,6 @@
 ﻿namespace DAL.Helpers
 {
-	public class SaveUpdateResult<T>
+	public struct SaveUpdateResult<T>
 	{
 		/// <summary>
 		/// Gets or sets the result.

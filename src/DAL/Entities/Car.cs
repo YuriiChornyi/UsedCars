@@ -16,7 +16,7 @@ namespace DAL.Entities
 		/// <summary>
 		/// Gets or sets the engine.
 		/// </summary>
-		public Engine Engine { get; set; }
+		public virtual Engine Engine { get; set; }
 
 		/// <summary>
 		/// Gets or sets the engine identifier.
@@ -27,7 +27,7 @@ namespace DAL.Entities
 		/// <summary>
 		/// Gets or sets the transmission.
 		/// </summary>
-		public Transmission Transmission { get; set; }
+		public virtual Transmission Transmission { get; set; }
 
 		/// <summary>
 		/// Gets or sets the transmission identifier.
@@ -38,7 +38,7 @@ namespace DAL.Entities
 		/// <summary>
 		/// Gets or sets the car model.
 		/// </summary>
-		public CarModel CarModel { get; set; }
+		public virtual CarModel CarModel { get; set; }
 
 		/// <summary>
 		/// Gets or sets the car model identifier.

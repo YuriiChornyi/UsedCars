@@ -7,7 +7,7 @@ namespace UsedCars.Models
 		/// <summary>
 		/// Gets or sets the user pk.
 		/// </summary>
-		public Guid UserPK { get; set; }
+		public Guid UserId { get; set; }
 
 		/// <summary>
 		/// Gets or sets the name.

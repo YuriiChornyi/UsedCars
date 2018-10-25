@@ -1,41 +1,26 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace DAL.Entities
+namespace UsedCars.Models
 {
-	/// <summary>
-	/// Advertisement Entity
-	/// </summary>
-	public class Advertisement
+	public class AdvertisementModel
 	{
 		/// <summary>
 		/// Gets or sets the advertisement pk.
 		/// </summary>
-		[Key]
 		public Guid AdvertisementId { get; set; }
-
-		/// <summary>
-		/// Gets or sets the user.
-		/// </summary>
-		public virtual User User { get; set; }
 
 		/// <summary>
 		/// Gets or sets the user fk.
 		/// </summary>
-		[ForeignKey("User")]
 		public Guid UserId { get; set; }
 
 		/// <summary>
 		/// Gets or sets the description.
 		/// </summary>
-		[MaxLength(500)]
 		public string Description { get; set; }
-
-		/// <summary>
-		/// Gets or sets the car.
-		/// </summary>
-		public virtual Car Car { get; set; }
 
 		/// <summary>
 		/// Gets or sets the car identifier.

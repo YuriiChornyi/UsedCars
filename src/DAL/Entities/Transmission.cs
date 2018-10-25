@@ -17,7 +17,7 @@ namespace DAL.Entities
 		/// <summary>
 		/// Gets or sets the type of the gear box.
 		/// </summary>
-		public GearBoxType GearBoxType { get; set; }
+		public virtual GearBoxType GearBoxType { get; set; }
 
 		/// <summary>
 		/// Gets or sets the gear box type identifier.
@@ -28,7 +28,7 @@ namespace DAL.Entities
 		/// <summary>
 		/// Gets or sets the type of the transmission.
 		/// </summary>
-		public TransmissionType TransmissionType { get; set; }
+		public virtual TransmissionType TransmissionType { get; set; }
 
 		/// <summary>
 		/// Gets or sets the transmission type identifier.

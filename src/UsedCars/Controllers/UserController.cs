@@ -1,7 +1,4 @@
-﻿using System;
-using AutoMapper;
-using DAL.Entities;
-using DAL.Helpers;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Services;
 using UsedCars.Helpers;
@@ -9,7 +6,7 @@ using UsedCars.Models;
 
 namespace UsedCars.Controllers
 {
-	public class UserController : Controller
+	public class UserController : ControllerBase
 	{
 		private readonly IUserService _service;
 		private readonly IMapper _mapper;
@@ -28,15 +25,7 @@ namespace UsedCars.Controllers
 		[HttpPost]
 		public SaveUpdateResultModel<UserModel> Register(string name, string email, string phone)
 		{
-			var user = new UserModel
-			{
-				Name = name,
-				Email = email,
-				Phone = phone,
-				RegistrationDate = DateTime.Now
-			};
-
-			return _mapper.Map<SaveUpdateResult<User>, SaveUpdateResultModel<UserModel>>(_service.AddUserAsync(_mapper.Map<User>(user)));
+			return _mapper.Map<SaveUpdateResultModel<UserModel>>(_service.AddUserAsync(name,email,phone));
 		}
 	}
 }

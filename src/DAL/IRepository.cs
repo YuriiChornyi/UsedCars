@@ -21,7 +21,14 @@ namespace DAL
 		/// Gets the specified identifier.
 		/// </summary>
 		/// <param name="id">The identifier.</param>
-		Task<T> Get(Guid id);
+		Task<T> GetByGuid(Guid id);
+
+		/// <summary>
+		/// Gets the by identifier.
+		/// </summary>
+		/// <param name="id">The identifier.</param>
+		/// <returns></returns>
+		T GetById(int id);
 
 		/// <summary>
 		/// Adds the specified item.

@@ -34,6 +34,16 @@ namespace DAL.Repositories
 			throw new NotImplementedException();
 		}
 
+		public Task<User> GetByGuid(Guid id)
+		{
+			throw new NotImplementedException();
+		}
+
+		public User GetById(int id)
+		{
+			throw new NotImplementedException();
+		}
+
 		public Task<User> Get(Guid id)
 		{
 			throw new NotImplementedException();

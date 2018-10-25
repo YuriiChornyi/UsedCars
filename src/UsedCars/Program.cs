@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore;
-using Microsoft.Extensions.Configuration;
 
 namespace UsedCars
 {
@@ -16,11 +15,5 @@ namespace UsedCars
 			WebHost.CreateDefaultBuilder(args)
 				.ConfigureServices(services => services.AddAutofac())
 				.UseStartup<Startup>();
-
-		//.ConfigureAppConfiguration((hostContext, config) =>
-		//{
-		//	config.Sources.Clear();
-		//	config.AddJsonFile("appsettings.json");
-		//});
 	}
 }

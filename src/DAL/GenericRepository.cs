@@ -36,6 +36,16 @@ namespace DAL
 			return _dbContext.Set<T>().AsNoTracking();
 		}
 
+		public Task<T> GetByGuid(Guid id)
+		{
+			return _dbContext.Set<T>().FindAsync(id);
+		}
+
+		public T GetById(int id)
+		{
+			return _dbContext.Set<T>().Find(id);
+		}
+
 		/// <summary>
 		/// Gets the specified identifier.
 		/// </summary>
@@ -52,12 +62,16 @@ namespace DAL
 		/// <param name="item"></param>
 		public void Add(T item)
 		{
-			_dbContext.Set<T>().AddAsync(item);
+			_dbContext.Set<T>().Add(item);
 		}
 
 		public SaveUpdateResult<T> AddAsync(T item)
 		{
-			throw new NotImplementedException();
+			var res=_dbContext.Set<T>().AddAsync(item);
+			var errorCode = _dbContext.SaveChanges() > 0 ? 1 : 2;
+
+			return new SaveUpdateResult<T>() {Result = res.Result.Entity, ErrorCode = (ErrorCodeExtended) errorCode};
+
 		}
 
 		/// <summary>

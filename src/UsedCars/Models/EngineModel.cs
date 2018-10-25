@@ -1,29 +1,19 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace DAL.Entities
+﻿namespace UsedCars.Models
 {
 	/// <summary>
-	/// Engine Entity
+	/// EngineModel
 	/// </summary>
-	public class Engine
+	public class EngineModel
 	{
 		/// <summary>
 		/// Gets or sets the engine identifier.
 		/// </summary>
-		[Key]
 		public int EngineId { get; set; }
 
 		/// <summary>
 		/// Gets or sets the type of the engine.
 		/// </summary>
-		public virtual EngineType EngineType { get; set; }
-
-		/// <summary>
-		/// Gets or sets the engine type identifier.
-		/// </summary>
-		[ForeignKey("EngineType")]
-		public int EngineTypeId { get; set; }
+		public virtual EngineTypeModel EngineType { get; set; }
 
 		/// <summary>
 		/// Gets or sets the value.

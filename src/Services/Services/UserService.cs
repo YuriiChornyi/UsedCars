@@ -19,7 +19,11 @@ namespace Services
 			_mapper = mapper;
 		}
 
-		public SaveUpdateResult<User> AddUserAsync(User userToAdd) =>_userRepository.AddAsync(userToAdd);
+		public SaveUpdateResult<User> AddUserAsync(string name, string email, string phone)
+		{
+			User u = new User() {Email = email, Name = name, Phone = phone, RegistrationDate = DateTime.Now};
+			return _userRepository.AddAsync(u);
+		}
 
 		public void RemoveUser(User userToRemove)
 		{

@@ -12,9 +12,11 @@ namespace Services
 		/// <summary>
 		/// Adds the user asynchronous.
 		/// </summary>
-		/// <param name="userToAdd">The user to add.</param>
+		/// <param name="name"></param>
+		/// <param name="email"></param>
+		/// <param name="phone"></param>
 		/// <returns>Task</returns>
-		SaveUpdateResult<User> AddUserAsync(User userToAdd);
+		SaveUpdateResult<User> AddUserAsync(string name, string email, string phone);
 
 		/// <summary>
 		/// Removes the user.
