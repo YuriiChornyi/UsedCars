@@ -11,6 +11,8 @@ namespace UsedCars.Controllers
 	/// 
 	/// </summary>
 	/// <seealso cref="Microsoft.AspNetCore.Mvc.ControllerBase" />
+	[Route("[Controller]/[Action]")]
+	[ApiController]
 	public class EngineController : ControllerBase
 	{
 		private readonly IEngineService _service;
@@ -28,9 +30,9 @@ namespace UsedCars.Controllers
 		}
 
 		[HttpPost]
-		public SaveUpdateResultModel<EngineModel> CreateEngine(int engineTypeId, string value, int hp)
+		public SaveUpdateResultModel<EngineModel> CreateEngine([FromBody]EngineModel engine)
 		{
-			return _mapper.Map<SaveUpdateResultModel<EngineModel>>(_service.CreateEngine(engineTypeId, value, hp));
+			return _mapper.Map<SaveUpdateResultModel<EngineModel>>(_service.CreateEngine(engine.EngineType.EngineTypeId, engine.Value, engine.HP));
 		}
 	}
 }

@@ -25,7 +25,7 @@ namespace UsedCars.Controllers
 		}
 
 		[HttpGet]
-		public List<GearBoxTypeModel> GearBoxTypes()
+		public List<GearBoxTypeModel> GetGearBoxTypes()
 		{
 			return _mapper.Map<List<GearBoxTypeModel>>(_service.GetGearBoxTypes());
 		}

@@ -10,6 +10,7 @@ using AutoMapper;
 using DAL;
 using DAL.Entities;
 using DAL.Repositories;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Services;
 using Services.Services;
@@ -35,7 +36,10 @@ namespace UsedCars
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public IServiceProvider ConfigureServices(IServiceCollection services)
 		{
-			services.AddCors();
+			services.AddCors(options => options.AddPolicy("AllowAll", p => p.AllowAnyOrigin()
+				.AllowAnyMethod()
+				.AllowAnyHeader()));
+
 			services.AddMvc()
 				.SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
@@ -87,10 +91,9 @@ namespace UsedCars
 				app.UseHsts();
 			}
 
-			app.UseCors(builder =>
-				builder.WithOrigins("*"));
-
 			app.UseHttpsRedirection();
+
+			app.UseCors("AllowAll");
 
 			app.UseMvc(routes =>
 			{
