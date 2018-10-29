@@ -18,14 +18,14 @@ namespace Services.Services
 
 		}
 
-		public List<EngineType> GetEngineTypes()
+		public List<Engine> GetEngines()
 		{
-			return _engineTypeRepository.GetAll().ToList();
+			return _engineRepository.GetAll().ToList();
 		}
 
 		public SaveUpdateResult<Engine> CreateEngine(int engineTypeId, string value, int hp)
 		{
-			return _engineRepository.AddAsync(new Engine() {EngineTypeId = engineTypeId, Value = value, HP = hp});
+			return _engineRepository.AddAsync(new Engine {EngineTypeId = engineTypeId, Value = value, HP = hp});
 		}
 	}
 }

@@ -33,7 +33,7 @@ namespace DAL
 		/// <returns>IQueryable All</returns>
 		public IQueryable<T> GetAll()
 		{
-			return _dbContext.Set<T>().AsNoTracking();
+			return _dbContext.Set<T>();
 		}
 
 		public Task<T> GetByGuid(Guid id)

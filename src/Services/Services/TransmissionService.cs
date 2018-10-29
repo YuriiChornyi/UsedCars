@@ -9,23 +9,16 @@ namespace Services.Services
 	public class TransmissionService :ITransmissionService
 	{
 		private readonly IRepository<Transmission> _transmissionRepository;
-		private readonly IRepository<TransmissionType> _transmissionTypeRepository;
-		private readonly IRepository<GearBoxType> _gearBoxTypeRepository;
 
-		public TransmissionService(IRepository<Transmission> transmission, IRepository<TransmissionType> transmissionType, IRepository<GearBoxType> gearBoxType)
+		public TransmissionService(IRepository<Transmission> transmission,
+			IRepository<TransmissionType> transmissionType, IRepository<GearBoxType> gearBoxType)
 		{
 			_transmissionRepository = transmission;
-			_transmissionTypeRepository = transmissionType;
-			_gearBoxTypeRepository = gearBoxType;
-		}
-		public List<TransmissionType> GetTrasmissionTypes()
-		{
-			return _transmissionTypeRepository.GetAll().ToList();
 		}
 
-		public List<GearBoxType> GetGearBoxTypes()
+		public List<Transmission> GetTrasmissions()
 		{
-			return _gearBoxTypeRepository.GetAll().ToList();
+			return _transmissionRepository.GetAll().ToList();
 		}
 
 		public SaveUpdateResult<Transmission> CreateTransmission(int gearBoxTypeId, int transmissionTypeId)

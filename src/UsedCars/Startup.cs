@@ -61,6 +61,7 @@ namespace UsedCars
 			builder.RegisterType<EngineService>().As<IEngineService>();
 			builder.RegisterType<TransmissionService>().As<ITransmissionService>();
 			builder.RegisterType<CarService>().As<ICarService>();
+			builder.RegisterType<AdvertisementService>().As<IAdvertisementService>();
 
 			builder.RegisterType<UserRepository>().As<IUserRepository>().SingleInstance();
 			builder.RegisterType<GenericRepository<Car>>().As<IRepository<Car>>().SingleInstance();

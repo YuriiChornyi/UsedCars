@@ -1,7 +1,9 @@
 ﻿using System;
+using Newtonsoft.Json;
 
 namespace UsedCars.Models
 {
+	[JsonObject]
 	public class CarModel
 	{
 		/// <summary>

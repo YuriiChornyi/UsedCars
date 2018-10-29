@@ -6,9 +6,7 @@ namespace Services.Services
 {
 	public interface ITransmissionService
 	{
-		List<TransmissionType> GetTrasmissionTypes();
-
-		List<GearBoxType> GetGearBoxTypes();
+		List<Transmission> GetTrasmissions();
 
 		SaveUpdateResult<Transmission> CreateTransmission(int gearBoxTypeId, int transmissionTypeId);
 	}

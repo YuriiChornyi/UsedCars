@@ -1,8 +1,11 @@
-﻿namespace UsedCars.Models
+﻿using Newtonsoft.Json;
+
+namespace UsedCars.Models
 {
 	/// <summary>
 	/// EngineModel
 	/// </summary>
+	[JsonObject]
 	public class EngineModel
 	{
 		/// <summary>

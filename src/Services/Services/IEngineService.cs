@@ -6,7 +6,7 @@ namespace Services.Services
 {
 	public interface IEngineService
 	{
-		List<EngineType> GetEngineTypes();
+		List<Engine> GetEngines();
 
 		SaveUpdateResult<Engine> CreateEngine(int engineTypeId, string value, int hp);
 	}

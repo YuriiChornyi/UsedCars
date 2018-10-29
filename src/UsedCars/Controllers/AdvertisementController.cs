@@ -23,7 +23,7 @@ namespace UsedCars.Controllers
 		}
 
 		[HttpPost]
-		public SaveUpdateResultModel<AdvertisementModel> CreateAdvertisement(AdvertisementModel advertisement)
+		public SaveUpdateResultModel<AdvertisementModel> CreateAdvertisement([FromBody] AdvertisementModel advertisement)
 		{
 			return _mapper.Map<SaveUpdateResultModel<AdvertisementModel>>(
 				_service.CreateAdvertisement(_mapper.Map<Advertisement>(advertisement)));

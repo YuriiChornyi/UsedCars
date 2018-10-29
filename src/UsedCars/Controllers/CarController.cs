@@ -18,11 +18,18 @@ namespace UsedCars.Controllers
 			_mapper = mapper;
 		}
 
+		//[HttpPost]
+		//public SaveUpdateResultModel<CarModel> CreateCar(int engineId, int transmissionId, int carModelId, DateTime? productionYear, string vinCode)
+		//{
+		//	return _mapper.Map<SaveUpdateResultModel<CarModel>>(_service.CreateCar(engineId, transmissionId, carModelId,
+		//		productionYear, vinCode));
+		//}
+
 		[HttpPost]
-		public SaveUpdateResultModel<CarModel> CreateCar(int engineId, int transmissionId, int carModelId, DateTime? productionYear, string vinCode)
+		public SaveUpdateResultModel<CarModel> CreateCar([FromBody] CarModel car)
 		{
-			return _mapper.Map<SaveUpdateResultModel<CarModel>>(_service.CreateCar(engineId, transmissionId, carModelId,
-				productionYear, vinCode));
+			return _mapper.Map<SaveUpdateResultModel<CarModel>>(_service.CreateCar(car.Engine.EngineId,
+				car.Transmission.TransmissionId, car.CarModelModel.CarModelId, car.ProductionYear, car.VinCode));
 		}
 	}
 }

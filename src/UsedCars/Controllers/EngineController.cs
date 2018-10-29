@@ -24,9 +24,9 @@ namespace UsedCars.Controllers
 		}
 
 		[HttpGet]
-		public List<EngineTypeModel> GetEngineTypes()
+		public List<EngineModel> GetEngines()
 		{
-			return _mapper.Map<List<EngineTypeModel>>(_service.GetEngineTypes());
+			return _mapper.Map<List<EngineModel>>(_service.GetEngines());
 		}
 
 		[HttpPost]
@@ -34,5 +34,11 @@ namespace UsedCars.Controllers
 		{
 			return _mapper.Map<SaveUpdateResultModel<EngineModel>>(_service.CreateEngine(engine.EngineType.EngineTypeId, engine.Value, engine.HP));
 		}
+
+		//[HttpPost]
+		//public SaveUpdateResultModel<EngineModel> CreateEngine([FromBody]int engineTypeId)
+		//{
+		//	return _mapper.Map<SaveUpdateResultModel<EngineModel>>(_service.CreateEngine(engineTypeId, "", 0));
+		//}
 	}
 }
