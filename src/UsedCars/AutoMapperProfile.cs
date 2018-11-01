@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using DAL.Entities;
 using DAL.Helpers;
+using UsedCars.Controllers;
 using UsedCars.Helpers;
 using UsedCars.Models;
+using AdvertisementD = DAL.DapperEntities.Advertisement;
 
 namespace UsedCars
 {
@@ -25,9 +27,14 @@ namespace UsedCars
 			CreateMap<TransmissionType, TransmissionTypeModel>().ReverseMap();
 			CreateMap<Transmission, TransmissionModel>().ReverseMap();
 			CreateMap<GearBoxType, GearBoxTypeModel>().ReverseMap();
-			CreateMap<Car, Models.CarModel>().ReverseMap()
-				.ForMember(x => x.CarModel, y => y.MapFrom(x => x.CarModelModel));
+			CreateMap<Car, Models.CarModel>().ReverseMap();
+			CreateMap<Advertisement, AdvertisementModel>().ReverseMap();
+			CreateMap<AdvertisementD, AdvertisementDModel>().ReverseMap();
+			CreateMap<Photo, PhotoModel>().ReverseMap();
+
+
 			CreateMap(typeof(SaveUpdateResult<User>), typeof(SaveUpdateResultModel<UserModel>)).ReverseMap();
+			CreateMap(typeof(ListDtoModel<AdvertisementD>), typeof(ListDto<AdvertisementDModel>)).ReverseMap();
 		}
 	}
 }

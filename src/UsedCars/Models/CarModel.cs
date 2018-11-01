@@ -12,19 +12,24 @@ namespace UsedCars.Models
 		public Guid CarId { get; set; }
 
 		/// <summary>
+		/// Gets or sets the advertisement identifier.
+		/// </summary>
+		public Guid AdvertisementId { get; set; }
+
+		/// <summary>
 		/// Gets or sets the engine.
 		/// </summary>
-		public EngineModel Engine { get; set; }
+		public int EngineId { get; set; }
 
 		/// <summary>
 		/// Gets or sets the transmission.
 		/// </summary>
-		public TransmissionModel Transmission { get; set; }
+		public int TransmissionId { get; set; }
 
 		/// <summary>
 		/// Gets or sets the car model.
 		/// </summary>
-		public CarModelModel CarModelModel { get; set; }
+		public int CarModelId { get; set; }
 
 		/// <summary>
 		/// Gets or sets the production year.

@@ -47,6 +47,17 @@ namespace DAL.Entities
 		public int CarModelId { get; set; }
 
 		/// <summary>
+		/// Gets or sets the advertisement.
+		/// </summary>
+		public virtual Advertisement Advertisement { get; set; }
+
+		/// <summary>
+		/// Gets or sets the advertisement identifier.
+		/// </summary>
+		[ForeignKey("Advertisement")]
+		public Guid AdvertisementId { get; set; }
+
+		/// <summary>
 		/// Gets or sets the production year.
 		/// </summary>
 		public DateTime? ProductionYear { get; set; }

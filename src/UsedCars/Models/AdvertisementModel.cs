@@ -1,7 +1,9 @@
 ﻿using System;
+using Newtonsoft.Json;
 
 namespace UsedCars.Models
 {
+	[JsonObject]
 	public class AdvertisementModel
 	{
 		/// <summary>
@@ -22,7 +24,7 @@ namespace UsedCars.Models
 		/// <summary>
 		/// Gets or sets the car identifier.
 		/// </summary>
-		public Guid CarId { get; set; }
+		public CarModel Car { get; set; }
 
 		/// <summary>
 		/// Gets or sets the price.

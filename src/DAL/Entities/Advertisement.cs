@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -38,13 +39,13 @@ namespace DAL.Entities
 		public virtual Car Car { get; set; }
 
 		/// <summary>
-		/// Gets or sets the car identifier.
-		/// </summary>
-		public Guid CarId { get; set; }
-
-		/// <summary>
 		/// Gets or sets the price.
 		/// </summary>
 		public double Price { get; set; }
+
+		/// <summary>
+		/// Gets or sets the i collection`1.
+		/// </summary>
+		public virtual ICollection<Photo> Photos { get; set; }
 	}
 }

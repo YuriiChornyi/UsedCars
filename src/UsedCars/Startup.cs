@@ -10,7 +10,7 @@ using AutoMapper;
 using DAL;
 using DAL.Entities;
 using DAL.Repositories;
-using Microsoft.AspNetCore.Cors.Infrastructure;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
 using Services;
 using Services.Services;
@@ -36,9 +36,20 @@ namespace UsedCars
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public IServiceProvider ConfigureServices(IServiceCollection services)
 		{
-			services.AddCors(options => options.AddPolicy("AllowAll", p => p.AllowAnyOrigin()
+			services.AddCors(options => options.AddPolicy("AllowAll", p => p
+				.AllowAnyOrigin()
 				.AllowAnyMethod()
-				.AllowAnyHeader()));
+				.AllowAnyHeader()
+				.AllowCredentials()));
+
+			services.Configure<FormOptions>(x =>
+			{
+				x.ValueLengthLimit = int.MaxValue;
+				x.MultipartBoundaryLengthLimit = int.MaxValue;
+				x.MultipartBodyLengthLimit = int.MaxValue; // In case of multipart
+				x.MultipartHeadersLengthLimit = int.MaxValue;
+				x.MemoryBufferThreshold = int.MaxValue;
+			});
 
 			services.AddMvc()
 				.SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
@@ -62,9 +73,11 @@ namespace UsedCars
 			builder.RegisterType<TransmissionService>().As<ITransmissionService>();
 			builder.RegisterType<CarService>().As<ICarService>();
 			builder.RegisterType<AdvertisementService>().As<IAdvertisementService>();
+			builder.RegisterType<PhotoService>().As<IPhotoService>();
 
 			builder.RegisterType<UserRepository>().As<IUserRepository>().SingleInstance();
 			builder.RegisterType<GenericRepository<Car>>().As<IRepository<Car>>().SingleInstance();
+			builder.RegisterType<GenericRepository<Photo>>().As<IRepository<Photo>>().SingleInstance();
 			builder.RegisterType<GenericRepository<Engine>>().As<IRepository<Engine>>().SingleInstance();
 			builder.RegisterType<GenericRepository<EngineType>>().As<IRepository<EngineType>>().SingleInstance();
 			builder.RegisterType<GenericRepository<Manufacturer>>().As<IRepository<Manufacturer>>().SingleInstance();
@@ -100,7 +113,7 @@ namespace UsedCars
 			{
 				routes.MapRoute(
 					"default",
-					"{controller}/{action}/{id?}");
+					"{controller}/{action}");
 			});
 
 		}

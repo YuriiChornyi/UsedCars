@@ -11,6 +11,8 @@ namespace UsedCars.Controllers
 	/// AdvertisementController
 	/// </summary>
 	/// <seealso cref="ControllerBase" />
+	[Route("[Controller]/[Action]")]
+	[ApiController]
 	public class AdvertisementController : ControllerBase
 	{
 		private readonly IAdvertisementService _service;
@@ -23,10 +25,16 @@ namespace UsedCars.Controllers
 		}
 
 		[HttpPost]
-		public SaveUpdateResultModel<AdvertisementModel> CreateAdvertisement([FromBody] AdvertisementModel advertisement)
+		public SaveUpdateResultModel<AdvertisementModel> CreateAdvertisement([FromBody]AdvertisementModel advertisement)
 		{
 			return _mapper.Map<SaveUpdateResultModel<AdvertisementModel>>(
 				_service.CreateAdvertisement(_mapper.Map<Advertisement>(advertisement)));
+		}
+
+		[HttpGet]
+		public ListDtoModel<AdvertisementDModel> GetAdvertisementsPaged(int offset, int pageSize)
+		{
+			return _mapper.Map<ListDtoModel<AdvertisementDModel>>(_service.GetAdvertisementsPaged(offset, pageSize));
 		}
 	}
 }

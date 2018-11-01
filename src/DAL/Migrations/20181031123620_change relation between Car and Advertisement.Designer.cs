@@ -4,14 +4,16 @@ using DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DAL.Migrations
 {
     [DbContext(typeof(UsedCarsDbContext))]
-    partial class UsedCarsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181031123620_change relation between Car and Advertisement")]
+    partial class changerelationbetweenCarandAdvertisement
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -269,7 +271,7 @@ namespace DAL.Migrations
             modelBuilder.Entity("DAL.Entities.Photo", b =>
                 {
                     b.HasOne("DAL.Entities.Advertisement", "Advertisement")
-                        .WithMany("Photos")
+                        .WithMany()
                         .HasForeignKey("AdvertisementId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

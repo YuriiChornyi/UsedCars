@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using DAL.Entities;
+﻿using DAL.Entities;
+using DAL.Helpers;
+using AdvertisementD = DAL.DapperEntities.Advertisement;
 
 namespace DAL.Repositories
 {
@@ -10,5 +10,6 @@ namespace DAL.Repositories
 	public interface IAdvertisementRepository : IRepository<Advertisement>
 	{
 		//IEnumerable<Advertisement> GetAdvertisementsPagedWithFilters(int pageIndex, int pageSize);
+		ListDto<AdvertisementD> GetAdvertisementsPaged(int offset, int pageSize);
 	}
 }
