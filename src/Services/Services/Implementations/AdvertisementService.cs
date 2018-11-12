@@ -27,10 +27,11 @@ namespace Services.Services
 		public SaveUpdateResult<Advertisement> CreateAdvertisement(Advertisement advertisement)
 		{
 			var res = _repository.AddAsync(advertisement);
-			advertisement.Car.AdvertisementId = res.Result.AdvertisementId;
-			_carRepository.Add(advertisement.Car);
 			return res;
 		}
+
+		//public ListDto<Advertisement> GetAdvertisementsPaged(int offset, int pageSize) =>
+		//	_repository.GetLazyAdvertisementsPaged(offset, pageSize);
 
 		public ListDto<AdvertisementD> GetAdvertisementsPaged(int offset, int pageSize) =>
 			_repository.GetAdvertisementsPaged(offset, pageSize);

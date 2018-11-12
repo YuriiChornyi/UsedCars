@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace UsedCars.Controllers
+namespace UsedCars.Models
 {
 	public class PhotoModel
 	{
@@ -12,7 +12,7 @@ namespace UsedCars.Controllers
 		/// <summary>
 		/// Gets or sets the photo URL.
 		/// </summary>
-		public string PhotoURL { get; set; }
+		public string PhotoName { get; set; }
 
 		/// <summary>
 		/// Gets or sets the advertisement identifier.

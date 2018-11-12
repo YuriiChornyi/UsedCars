@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using DAL;
 using DAL.Entities;
 using Microsoft.AspNetCore.Http;
@@ -15,20 +16,21 @@ namespace Services.Services
 		{
 			_repository = repo;
 		}
-		public bool AddImages(IFormFileCollection files, Guid advertisementId)
+		public async Task<string> AddImages(IFormFileCollection files)
 		{
 			CloudBlobContainer container = GetCloudBlobContainer();
-			container.CreateIfNotExistsAsync();
-			advertisementId=new Guid("972B709A-1640-4193-A30A-08D63F3560C3");
-			
+			await container.CreateIfNotExistsAsync();
+
+			var photoName = "";
+
 			foreach (var file in files)
 			{
-				CloudBlockBlob blob = container.GetBlockBlobReference(file.FileName);
-				blob.UploadFromStreamAsync(file.OpenReadStream());
-				_repository.Add(new Photo{AdvertisementId = advertisementId, PhotoURL = "https://usedcarsphoto.blob.core.windows.net/images/" + file.FileName });
+				photoName = Guid.NewGuid() + "." + file.FileName.Split('.')[1];
+				CloudBlockBlob blob = container.GetBlockBlobReference(photoName);
+				await blob.UploadFromStreamAsync(file.OpenReadStream());
 			}
 
-			return true;
+			return photoName;
 		}
 
 		private CloudBlobContainer GetCloudBlobContainer()
@@ -38,10 +40,6 @@ namespace Services.Services
 			var cloudBlobClient = cloudStorageAccount.CreateCloudBlobClient();
 
 			var container = cloudBlobClient.GetContainerReference("images");
-			//CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-			//	CloudConfigurationManager.GetSetting("DefaultEndpointsProtocol=https;AccountName=usedcarsphoto;AccountKey=PAYlebNMkHTIMs6ddx7/9VWXKxjpNpVOE66xMT88r2CFItUCZT9NXZbpWiuXsIdBO9lX3OSTMTD7vL19TjlepA==;EndpointSuffix=core.windows.net"));
-			//CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-			//CloudBlobContainer container = blobClient.GetContainerReference("images");
 			return container;
 		}
 	}

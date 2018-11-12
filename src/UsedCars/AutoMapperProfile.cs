@@ -28,13 +28,15 @@ namespace UsedCars
 			CreateMap<Transmission, TransmissionModel>().ReverseMap();
 			CreateMap<GearBoxType, GearBoxTypeModel>().ReverseMap();
 			CreateMap<Car, Models.CarModel>().ReverseMap();
+			CreateMap<Photo, PhotoModel>().ForMember(dest => dest.PhotoName, m => m.MapFrom(src => "https://usedcarsphoto.blob.core.windows.net/images/" + src.PhotoName));
+			CreateMap<Advertisement, AdvertisementDModel>().ReverseMap();
+			CreateMap<PhotoModel, Photo>();
 			CreateMap<Advertisement, AdvertisementModel>().ReverseMap();
-			CreateMap<AdvertisementD, AdvertisementDModel>().ReverseMap();
-			CreateMap<Photo, PhotoModel>().ReverseMap();
 
 
 			CreateMap(typeof(SaveUpdateResult<User>), typeof(SaveUpdateResultModel<UserModel>)).ReverseMap();
 			CreateMap(typeof(ListDtoModel<AdvertisementD>), typeof(ListDto<AdvertisementDModel>)).ReverseMap();
+			CreateMap(typeof(ListDtoModel<Advertisement>), typeof(ListDto<AdvertisementDModel>)).ReverseMap();
 		}
 	}
 }

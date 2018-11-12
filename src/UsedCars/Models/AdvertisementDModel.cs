@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace UsedCars.Models
 {
@@ -14,5 +15,6 @@ namespace UsedCars.Models
 		public string UserName { get; set; }
 		public string Email { get; set; }
 		public string Phone { get; set; }
+		public List<PhotoModel> Photos { get; set; }
 	}
 }

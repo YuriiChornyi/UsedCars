@@ -14,6 +14,6 @@ namespace Services.Services
 		SaveUpdateResult<Advertisement> CreateAdvertisement(Advertisement advertisement);
 
 		ListDto<DAL.DapperEntities.Advertisement> GetAdvertisementsPaged(int offset, int pageSize);
-
+		//ListDto<Advertisement> GetAdvertisementsPaged(int offset, int pageSize);
 	}
 }

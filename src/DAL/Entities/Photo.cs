@@ -18,7 +18,7 @@ namespace DAL.Entities
 		/// <summary>
 		/// Gets or sets the photo URL.
 		/// </summary>
-		public string PhotoURL { get; set; }
+		public string PhotoName { get; set; }
 
 		/// <summary>
 		/// Gets or sets the advertisement.

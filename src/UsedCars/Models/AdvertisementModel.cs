@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace UsedCars.Models
@@ -30,5 +31,10 @@ namespace UsedCars.Models
 		/// Gets or sets the price.
 		/// </summary>
 		public double Price { get; set; }
+
+		/// <summary>
+		/// Gets or sets the photos.
+		/// </summary>
+		public List<PhotoModel> Photos { get; set; }
 	}
 }

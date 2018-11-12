@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
+using System.Threading.Tasks;
 
 namespace Services.Services
 {
 	public interface IPhotoService
 	{
-		bool AddImages(IFormFileCollection files, Guid advertisementId);
+		Task<string> AddImages(IFormFileCollection files);
 	}
 }

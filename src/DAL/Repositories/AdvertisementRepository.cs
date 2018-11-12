@@ -75,7 +75,7 @@ namespace DAL.Repositories
 				@"select man.ManufacturerName as CarManufacturer, carModel.CarModelName as CarModel, car.ProductionYear as ProductionYear,
 			adv.Price as Price, car.VinCode as VinCode, gearBoxType.[Type] + ' ' + transmissionType.[Type] as Transmission,
 			engineType.[Type] + ' ' + engine.[Value] + 'L. ' + CONVERT(VARCHAR(10), engine.HP) + 'hp' as Engine, 
-			carUser.[Name] as UserName, carUser.Email as Email, carUser.Phone as Phone
+			carUser.[Name] as UserName, carUser.Email as Email, carUser.Phone as Phone, photo.[PhotoName] as Photo
 			from dbo.Car as car
 				Left join  dbo.Advertisement as adv on car.AdvertisementId = adv.AdvertisementId
 			left join dbo.Engine as engine on engine.EngineId = car.EngineId
@@ -86,6 +86,7 @@ namespace DAL.Repositories
 			left join dbo.CarModel as carModel on carModel.CarModelId = car.CarModelId
 			left join dbo.Manufacturer as man on man.ManufacturerId = carModel.ManufacturerId
 			left join dbo.[User] as carUser on carUser.UserId = adv.UserId
+			left join dbo.[Photo] as photo on photo.AdvertisementId = adv.AdvertisementId
 			ORDER BY CarManufacturer DESC
 			OFFSET @offset ROWS
 				FETCH NEXT @pageSize ROWS ONLY";
@@ -98,6 +99,16 @@ namespace DAL.Repositories
 			}
 
 			return list;
+		}
+
+		public ListDto<Advertisement> GetLazyAdvertisementsPaged(int offset, int pageSize)
+		{
+			var  adv = _dbContext.Advertisement;
+			return new ListDto<Advertisement>()
+			{
+				Count = _dbContext.Advertisement.Count(),
+				Items = adv.Skip(offset).Take(pageSize).ToList()
+			};
 		}
 	}
 }

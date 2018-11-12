@@ -11,5 +11,7 @@ namespace DAL.Repositories
 	{
 		//IEnumerable<Advertisement> GetAdvertisementsPagedWithFilters(int pageIndex, int pageSize);
 		ListDto<AdvertisementD> GetAdvertisementsPaged(int offset, int pageSize);
+
+		ListDto<Advertisement> GetLazyAdvertisementsPaged(int offset, int pageSize);
 	}
 }

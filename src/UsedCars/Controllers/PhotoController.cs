@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.AspNetCore.Cors;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Services.Services;
 
@@ -17,14 +16,17 @@ namespace UsedCars.Controllers
 		}
 
 		[HttpPost, DisableRequestSizeLimit]
-		public void AddPhotos(Guid advertisementId)
+		public async Task<IActionResult> AddPhotos(string description)
 		{
 			var files = Request.Form.Files;
-			if (files.Count>0)
+
+			if (files.Count > 0)
 			{
-				_service.AddImages(files, new Guid());
+				var res = await _service.AddImages(files);
+				return new JsonResult(res);
 			}
 
+			return NoContent();
 		}
 	}
 }
